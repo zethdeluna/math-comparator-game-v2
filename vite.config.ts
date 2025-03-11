@@ -16,5 +16,5 @@ export default defineConfig({
 			include: '**/*.svg'
 		})
 	],
-	base: '/math-comparator-game'
+	base: '/math-comparator-game-v2'
 })
