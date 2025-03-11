@@ -24,7 +24,6 @@ const Stack: React.FC<StackProps> = ({ position }) => {
 	const [connectorState, setConnectorState] = useState<string>('');
 	const { cursorPosition, isDragging, ref } = useDragBlock();
 	const xOffset = 39;
-	const yOffset = -39;
 
 	useEffect(() => {
 		
