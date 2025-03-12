@@ -27,6 +27,8 @@ const ControlPanel = () => {
 			if ( buttonType === 'update' ) {
 				dispatch(setTopConnection(false));
 				dispatch(setBottomConnection(false));
+				dispatch(setPlayAnimation(false));
+				dispatch(setAnimationDirection('forward'));
 			}
 
 		}

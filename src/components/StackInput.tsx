@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { setLeftCount, getLeftCount, setRightCount, getRightCount } from "../features/stackInput/stackInputSlice";
 import { setMouseControl, getActiveMouseControl } from "../features/mouseControls/mouseControlsSlice";
 import { setTopConnection, setBottomConnection } from "../features/connectionLines/connections";
+import { setPlayAnimation, setAnimationDirection } from "../features/connectionLines/playAnimation";
 
 interface StackInputProps {
 	position: 'left' | 'right';
@@ -36,9 +37,12 @@ const StackInput: React.FC<StackInputProps> = ({ position }) => {
 
 		if ( mouseControl !== 'update' ) {
 			dispatch(setMouseControl('update'));
-			dispatch(setTopConnection(false));
-			dispatch(setBottomConnection(false));
 		}
+
+		dispatch(setTopConnection(false));
+		dispatch(setBottomConnection(false));
+		dispatch(setPlayAnimation(false));
+		dispatch(setAnimationDirection('forward'));
 
 		if (inputRef.current && document.activeElement !== inputRef.current) {
 			inputRef.current.focus();
