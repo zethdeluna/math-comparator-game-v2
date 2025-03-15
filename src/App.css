@@ -110,6 +110,7 @@ p {
 	margin: 0 0 var(--spacing-small);
 	text-align: center;
 	text-transform: uppercase;
+	user-select: none;
 	width: 100%;
 }
 
@@ -165,6 +166,7 @@ input[type="number"] {
 	font-size: calc(68rem / 16);
 	line-height: calc(85 / 68);
 	text-align: center;
+	user-select: none;
 }
 
 /*** Interactive Window ***/
@@ -445,6 +447,7 @@ body:has(.stack.grabbing) .stack-container .ice-cube {
 
 .control-panel label {
 	text-transform: capitalize;
+	user-select: none;
 }
 
 .control-panel .stack-inputs + .mouse-controls {
