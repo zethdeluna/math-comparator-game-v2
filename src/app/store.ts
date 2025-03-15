@@ -8,6 +8,7 @@ import { placeConnectionReducer } from "../features/connectionLines/placeConnect
 import { connectionsReducer } from "../features/connectionLines/connections";
 import { playAnimationReducer } from "../features/connectionLines/playAnimation";
 import { windowRectReducer } from "../features/interactiveWindow/windowRect";
+import { controlPanelReducer } from "../features/controlPanel/controlPanelSlice";
 
 const store = configureStore({
 	reducer: {
@@ -20,7 +21,8 @@ const store = configureStore({
 		connectTo: placeConnectionReducer,
 		connections: connectionsReducer,
 		playAnimation: playAnimationReducer,
-		windowPositions: windowRectReducer
+		windowPositions: windowRectReducer,
+		controlPanel: controlPanelReducer
 	}
 });
 

@@ -3,6 +3,7 @@ import { setMouseControl, getActiveMouseControl } from "../features/mouseControl
 import { setTopConnection, getTopConnection, setBottomConnection, getBottomConnection } from "../features/connectionLines/connections";
 import { setLeftCount, setRightCount } from "../features/stackInput/stackInputSlice";
 import { setPlayAnimation, getPlayAnimation, setAnimationDirection, getAnimationDirection } from "../features/connectionLines/playAnimation";
+import { setPanelState, getPanelState } from "../features/controlPanel/controlPanelSlice";
 import StackInput from "./StackInput";
 import SVG from "./SVG";
 
@@ -12,6 +13,7 @@ const ControlPanel = () => {
 	const hasBottomConnection = useAppSelector(getBottomConnection);
 	const isAnimating = useAppSelector(getPlayAnimation);
 	const animationDirection = useAppSelector(getAnimationDirection);
+	const panelState = useAppSelector(getPanelState);
 	const dispatch = useAppDispatch();
 
 	const handleMouseControl = (e: React.MouseEvent<HTMLElement>) => {
@@ -31,6 +33,10 @@ const ControlPanel = () => {
 				dispatch(setAnimationDirection('forward'));
 			}
 
+			if ( buttonType === 'compare' ) {
+				dispatch(setPanelState(''));
+			}
+
 		}
 
 	};
@@ -41,6 +47,7 @@ const ControlPanel = () => {
 
 			if ( hasTopConnection && hasBottomConnection ) {
 				dispatch(setPlayAnimation(true));
+				dispatch(setPanelState(''));
 
 				if ( animationDirection === 'forward' ) {
 					dispatch(setAnimationDirection('reverse'));

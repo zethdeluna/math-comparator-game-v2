@@ -67,6 +67,7 @@
 	--blue-25: #1E90FF40;
 	--dark-blue: #001932;
 	--light-blue: #BBDEFF;
+	--lighter-blue: #E2F1FF;
 	--body-font: 'Readex Pro', Helvetica, Arial, sans-serif;
 	--spacing-xsmall: 16px;
 	--spacing-small: 24px;
@@ -151,7 +152,6 @@ input[type="number"] {
 }
 
 .game .right-column {
-	/* align-self: flex-end; */
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing-xlarge);
@@ -233,7 +233,6 @@ body:has(.stack.grabbing) .stack-container .ice-cube {
 	flex-direction: column;
 	justify-content: center;
 	height: max-content;
-	/* min-height: 100%; */
 	position: relative;
 	scale: 1 -1;
 }
@@ -494,6 +493,169 @@ body:has(.stack.grabbing) .stack-container .ice-cube {
 	margin: 24px 0 0;
 }
 
-.tablet-control-button {
+.toggle-control-panel {
 	display: none;
+}
+
+/****************************************************************************************************/
+
+/* MQ Max-width 1400 - Medium Desktop */
+
+/****************************************************************************************************/
+
+@media only screen and (max-width: calc(1400rem / 16)) {
+
+	.game h1 {
+		font-size: calc(68 / 1400 * 100vw);
+	}
+
+	.interactive-window {
+		width: calc((100vw - 56px - 80px) / 5 * 3);
+	}
+
+	.game .right-column {
+		width: calc((100vw - 56px - 80px) / 5 * 2);
+	}
+
+}
+
+/****************************************************************************************************/
+
+/* MQ Max-width 1100 - Large Tablet */
+
+/****************************************************************************************************/
+
+@media only screen and (max-width: calc(1100rem/16)) {
+
+	.game:before {
+		background: var(--dark-blue);
+		content: '';
+		height: 100vh;
+		left: 0;
+		opacity: 0;
+		pointer-events: none;
+		position: fixed;
+		top: 0;
+		transition: all 0.25s ease;
+		visibility: hidden;
+		width: 100vw;
+		z-index: 1;
+	}
+
+	.game.controls-open:before {
+		opacity: 0.4;
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	.game h1 {
+		display: none;
+	}
+
+	.toggle-control-panel {
+		align-items: center;
+		background: var(--light-blue);
+		border: unset;
+		border-radius: 4px 0 0 4px;
+		display: flex;
+		height: 56px;
+		justify-content: center;
+		position: fixed;
+		right: 0;
+		top: 50%;
+		transition: background 0.25s ease;
+		translate: 0 -50%;
+		width: 28px;
+		z-index: 2;
+	}
+
+	.toggle-control-panel:hover {
+		background: var(--lighter-blue);
+	}
+
+	.toggle-control-panel svg {
+		height: 16px;
+		left: -1px;
+		position: relative;
+		transition: all 0.25s ease;
+		width: auto;
+	}
+
+	.controls-open .toggle-control-panel svg {
+		left: 1px;
+		scale: -1 1;
+	}
+
+	.interactive-window {
+		max-height: 100%;
+		width: 100%;
+	}
+
+	.game .right-column {
+		height: max-content;
+		left: 100%;
+		max-width: calc(100vw - 80px);
+		position: fixed;
+		top: 50%;
+		transition: all 0.25s ease;
+		translate: 0 -50%;
+		width: 350px;
+		z-index: 2;
+	}
+
+	.game.controls-open .right-column {
+		translate: calc(-100% - var(--spacing-large)) -50%;
+	}
+
+}
+
+/****************************************************************************************************/
+
+/* MQ Max-width 650 - Mobile */
+
+/****************************************************************************************************/
+
+@media only screen and (max-width: calc(650rem/16)) {
+
+	.interactive-window {
+		padding: var(--spacing-large) var(--spacing-large) var(--spacing-small);
+	}
+
+	.interactive-window .floating-ice-cube {
+		width: 42px;
+	}
+
+	.stack-container .ice-cube:before {
+		width: 26px;
+	}
+
+	.stack-container svg {
+		width: 42px;
+	}
+
+	.stack {
+		padding: 0 0 90px;
+	}
+
+	.stack .connector {
+		width: 44px;
+	}
+
+	.stack .connector.top {
+		top: -50px;
+	}
+
+	.stack .connector.bottom {
+		bottom: -54px;
+	}
+
+	.stack h3 {
+		font-size: calc(38rem / 16);
+	}
+
+	.control-panel {
+		border-radius: 16px;
+		padding: var(--spacing-medium) var(--spacing-small);
+	}
+
 }
